@@ -1,0 +1,19 @@
+rm -rf  workplace
+mkdir workplace
+cp -r easy-fs workplace
+cp -r easy-fs-fuse workplace
+cp -r ci-user workplace
+cp -r bootloader workplace
+cp -r reports workplace
+cp rust-toolchain.toml workplace
+cp -r os5 workplace/os
+cd workplace/ci-user && make test CHAPTER=5
+make[1]: Entering directory '/home/xzc/OScomp-lab/lab3-os5-XuZicang/workplace/ci-user'
+find user/src/bin -name "*.rs" | xargs perl -pi -e s,OK,OK19658,g
+find user/src/bin -name "*.rs" | xargs perl -pi -e s,passed,passed19658,g
+find check -name "*.py" | xargs perl -pi -e s,OK,OK19658,g
+find check -name "*.py" | xargs perl -pi -e s,passed,passed19658,g
+python3 overwrite.py 5
+make -C user build BASE=2 TEST=5 CHAPTER=5
+make[2]: Entering directory '/home/xzc/OScomp-lab/lab3-os5-XuZicang/workplace/ci-user/user'
+target/riscv64gc-unknown-none-elf/release/ch2b_power_7 target/riscv64gc-unknown-none-elf/release/ch2b_power_3 target/riscv64gc-unknown-none-elf/release/ch2b_power_5 target/riscv64gc-unknown-none-elf/release/ch2b_bad_register target/riscv64gc-unknown-none-elf/release/ch2b_hello_world target/riscv64gc-unknown-none-elf/release/ch2b_bad_instructions target/riscv64gc-unknown-none-elf/release/ch2b_bad_address target/riscv64gc-unknown-none-elf/release/ch3b_yield1 target/riscv64gc-unknown-none-elf/release/ch3b_sleep target/riscv64gc-unknown-none-elf/release/ch3b_yield2 target/riscv64gc-unknown-none-elf/release/ch3b_sleep1 target/riscv64gc-unknown-none-elf/release/ch3b_yield0 target/riscv64gc-unknown-none-elf/release/ch3_taskinfo target/riscv64gc-unknown-none-elf/release/ch4_mmap0 target/riscv64gc-unknown-none-elf/release/ch4_unmap target/riscv64gc-unknown-none-elf/release/ch4_mmap1 target/riscv64gc-unknown-none-elf/release/ch4_mmap2 target/riscv64gc-unknown-none-elf/release/ch4_unmap2 target/riscv64gc-unknown-none-elf/release/ch4_mmap3 target/riscv64gc-unknown-none-elf/release/ch5b_exit target/riscv64gc-unknown-none-elf/release/ch5b_forktree target/riscv64gc-unknown-none-elf/release/ch5_stride5 target/riscv64gc-unknown-none-elf/release/ch5_spawn1 target/riscv64gc-unknown-none-elf/release/ch5_stride3 target/riscv64gc-unknown-none-elf/release/ch5b_initproc target/riscv64gc-unknown-none-elf/release/ch5_stride4 target/riscv64gc-unknown-none-elf/release/ch5_stride target/riscv64gc-unknown-none-elf/release/ch5_usertest target/riscv64gc-unknown-none-elf/release/ch5b_forktest_simple target/riscv64gc-unknown-none-elf/release/ch5b_forktest2 target/riscv64gc-unknown-none-elf/release/ch5_spawn0 target/riscv64gc-unknown-none-elf/release/ch5_setprio target/riscv64gc-unknown-none-elf/release/ch5_exit1 target/riscv64gc-unknown-none-elf/release/ch5_stride0 target/riscv64gc-unknown-none-elf/release/ch5_getpid target/riscv64gc-unknown-none-elf/release/ch5_exit0 target/riscv64gc-unknown-none-elf/release/ch5_stride2 target/riscv64gc-unknown-none-elf/release/ch5b_forktest target/riscv64gc-unknown-none-elf/release/ch5_stride1 target/riscv64gc-unknown-none-elf/release/ch5b_user_shell
